@@ -1,0 +1,1 @@
+define(['plugins/query_bar/init'], _.identity);

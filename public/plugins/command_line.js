@@ -1,0 +1,1 @@
+define(['plugins/command_line/init'], _.identity);

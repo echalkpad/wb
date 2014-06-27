@@ -1,0 +1,1 @@
+define(['plugins/tags/init'], _.identity);

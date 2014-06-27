@@ -1,0 +1,16 @@
+article[data-types~=man] header h1 {
+  background: url(../../images/icons/man.png) no-repeat .2em .3em;
+  padding-left: 1.4em;
+}
+article[data-types~=woman] header h1 {
+  background: url(../../images/icons/woman.png) no-repeat .2em .3em;
+  padding-left: 1.4em;
+}
+article[data-types~=dog] header h1 {
+  background: url(../../images/icons/dog.png) no-repeat .2em .3em;
+  padding-left: 1.4em;
+}
+article[data-types~=company] header h1 {
+  background: url(../../images/icons/building.png) no-repeat .2em .3em;
+  padding-left: 1.4em;
+}

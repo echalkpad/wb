@@ -1,0 +1,1 @@
+define(['plugins/noty/init'], _.identity);

@@ -1,0 +1,38 @@
+<html>
+<head>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <script>
+    curl = {
+      baseUrl: '/js/',
+      paths: {
+        'curl': 'vendor/curl/',
+        'style': '/css/',
+        'plugins': '/plugins/'
+      }
+    };
+  </script>
+  <script type="text/javascript" src="/js/vendor/curl.js"></script>
+  <script>
+    (function(){
+      curl(['foundation']).
+      next(['foundation-ui']).
+      next(['extend_natives']).
+      next(['link!style/main.css','link!style/tree.css','link!style/maps/flintstones.css']).
+      next(['core']).
+      next(['map_editor']).
+      next(['commands/core','permissions']).
+      next(['plugins/tags']).
+      next(['plugins/noty']).
+      next(['plugins/query_bar']).
+      next(['plugins/entry_bar']).
+      next(['plugins/command_line']).
+      next(['plugins/transformations']).
+      next(['app']);
+    })();
+  </script>
+</head>
+<body>
+  <div id='app'></div>
+</body>
+</html>

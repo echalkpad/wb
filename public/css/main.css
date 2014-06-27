@@ -1,0 +1,1033 @@
+html, body, #app {
+  height: 100%;
+  width: 100%;
+}
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Helvetica;
+  font-size: .9em;
+  background-color: #EEE;
+}
+* {
+  margin: 0;
+}
+.ui-datepicker, .ui-timepicker {
+  z-index: 999;
+  font-size: .9em !important;
+}
+#app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+#app article section.commands,
+#app article.topic section.footer,
+#app article.topic section.names,
+#app article.topic section.occurrences,
+#app article.topic section.constraints,
+#app article.topic ul.associations,
+#app article.topic li[data-attribute=id],
+#app article.topic li[data-attribute=topic_map_id],
+#app article.topic li[data-attribute=iids],
+#app article.topic li[data-attribute=scopes],
+#app article.topic li[data-attribute=types],
+#app article.topic li[data-attribute=supertypes]{
+  display: none;
+}
+#app[data-mode=command] article section.commands,
+#app.footer       article.topic section.footer,
+#app.names        article.topic section.names,
+#app.occurrences  article.topic section.occurrences,
+#app.constraints  article.topic[data-basic-type=true] section.constraints,
+#app              article.new li[data-attribute=types],
+#app              article.new section.names,
+#app.associations article.topic section.associations,
+#app.ids          article.topic li[data-attribute=topic_map_id],
+#app.identifiers  article.topic li[data-attribute=iids],
+#app.scopes       article.topic li[data-attribute=scopes],
+#app.supertypes   article.topic li[data-attribute=supertypes],
+#app.types        article.topic li[data-attribute=types],
+#app              article.topic li.once-invalid { /* display errors regardless */
+  display: block;
+}
+#app[data-size=small] .workspace {
+  font-size: .85em !important;
+}
+#app[data-size=large] .workspace {
+  font-size: 1.4em !important;
+}
+.workspace {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding: 0;
+  z-index: 0;
+}
+.workspace > * {
+  box-shadow: 3px 3px 4px #000;
+  background-color: white;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding: 1em;
+  margin: 1em ;
+  position: relative;
+  min-width: 28.2em;
+  float: left;
+  clear: both;
+}
+.workspace article div.tagged {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  background: url(../images/icons/add-small.png) no-repeat;
+  width: 16px;
+  height: 16px;
+}
+.workspace article.topics > table {
+  border-collapse: collapse;
+  font-size: inherit;
+  min-width: 29.75em;
+  width: 29.75em;
+  margin: .369em;
+}
+.workspace article.topics > table > caption {
+  text-transform: capitalize;
+  text-align: left;
+}
+.workspace article.topics > table tr > * {
+  border: solid 1px #BBB;
+  padding: .2em;
+  text-align: left;
+}
+.workspace article.topics > table td {
+  border: dotted 1px #BBB;
+}
+.workspace article.topics > table *.Integer {
+  text-align: right;
+}
+.workspace article.topics > table th {
+  background-color: #BBB;
+  color: white;
+  text-transform: capitalize;
+}
+a.unnamed {
+  color: dimgray;
+  text-decoration: none;
+}
+article, article section, article ul {
+  float: left;
+  list-style: none;
+}
+article section, article ul {
+  margin: 0;
+}
+article ul, article section {
+  float: none;
+  clear: both;
+  padding: 0;
+  width: auto;
+}
+article > section {
+  width: 31em;
+}
+article.topic_map header h1 {
+  background: url(../images/icons/topicmap.png) no-repeat .2em .3em;
+  padding-left: 1.4em;
+}
+article.topic_map div {
+  float: left;
+  clear: both;
+}
+article.topic_map fieldset a {
+  background-color: #DDD;
+}
+article li[data-attribute=topic_map_id] > a, article li input, article li select, article li textarea, article li div.card, article li label + span {
+  float: left;
+  width: 30em;
+  margin: 0;
+  padding: .3em;
+  clear: both;
+  text-decoration: none;
+  font-size: inherit;
+}
+article > header {
+  float: left;
+  clear: both;
+  width: 30em;
+}
+article section header {
+  /* border: solid 1px #EEE; */
+  color: dimgray;
+  text-transform: uppercase;
+  padding: .4em .4em .4em 14px;
+  position: relative;
+  background: url(/images/icons/minus.png) no-repeat 2px 5px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+article section header:hover {
+  background-color: #EEE;
+}
+article section header > * {
+  font-size: .7em;
+}
+article li input[type=checkbox] {
+  width: 1em;
+  margin-right: 29em;
+}
+article li div.card {
+  padding: 0;
+}
+article li div.card input {
+  width: 3em;
+  clear: none;
+  margin: 0;
+  text-align: right;
+}
+article label + span {
+  color: dimgray;
+  font-size: .9em;
+}
+article label {
+  float: left;
+  clear: left;
+  padding: .2em;
+  margin: 0 .2em .2em .2em;
+  font-size: .6em;
+  text-transform: uppercase;
+  color: dimgray;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+article li input {
+  clear: both;
+  float: left;
+}
+li.here {
+  background-color: yellow;
+}
+article > section > ul > li {
+  display: block;
+  float: left;
+  clear: left;
+  padding: .3em;
+  margin: 0;
+  border: solid 1px transparent;
+}
+article > section.names > ul > li button, article > section.occurrences > ul > li button {
+  margin: .2em .3em;
+}
+article label, article li.here {
+  background-color: #D8E1EB;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+article li.here {
+  border: solid 1px #AAA;
+}
+article.topic section.names label, article.topic section.names li.here {
+  background-color: #F6FAD7;
+}
+article.topic section.occurrences label, article.topic section.occurrences li.here {
+  background-color: #D8EBE2;
+}
+article.topic section.constraints label, article.topic section.constraints li.here {
+  background-color: #F9E0E0;
+}
+article.topic li.prompt label, article.topic section li.prompt.here {
+  background-color: #FEE1B7 !important;
+}
+article li.invalid label, article li.invalid {
+  background-color: #FADBDB !important;
+}
+article li.invalid {
+ border: solid 1px pink !important;
+}
+article ul > li:hover {
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: solid 1px #EEE;
+}
+article ul.types > li:hover {
+  border: none;
+}
+article section.meta li {
+  float: left;
+  clear: both;
+}
+article section.meta.footer li {
+  clear: none;
+  font-size: .75em;
+}
+article section.meta li:hover {
+  dborder-color: transparent;
+}
+article ul.tagit li.tagit-new:hover {
+  border: none;
+}
+article section.meta li[data-attribute=creator_id], article section.meta li[data-attribute=updater_id] {
+  width: 7.5em;
+}
+article section.meta li > span {
+  width: 7.25em;
+  text-align: right;
+  padding-right: 0;
+}
+article ul > li > label {
+  font-size: .7em;
+}
+article section.meta li[data-attribute=creator_id] > label, article section.meta li[data-attribute=updater_id] > label {
+  float: right;
+}
+article section.meta li[data-attribute=creator_id] > label, article section.meta li[data-attribute=updater_id] > label {
+  visibility: hidden;
+}
+article ul > li > span {
+  white-space: nowrap;
+}
+article[data-basic-type=false] li[data-attribute=iids], article[data-basic-type=false] li[data-attribute=supertypes]{
+  display:none !important;
+}
+article header h1 {
+  font-weight: bold;
+  font-size: 1.3em;
+  margin: 0 0 0 0;
+  float: left;
+  min-height: 1em;
+  padding: .2em;
+}
+article.topics header h1 {
+  text-transform: capitalize;
+}
+.ui-draggable {
+  border: dashed 1px transparent;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space: no-wrap;
+}
+.ui-draggable-dragging {
+  border-color: black;
+  background-color: white;
+  white-space: no-wrap;
+  z-index: 99;
+}
+article header a {
+  float :right;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #EEE;
+  padding: 2px;
+  font-size: .9em;
+  margin: .2em;
+  text-decoration: none;
+  color: black;
+}
+article section.commands{
+  padding: 0;
+  text-align: center;
+  width: 30em;
+  font-size: inherit;
+}
+article section.commands li {
+  float: left;
+  clear: none;
+  padding: 0;
+  margin: 0 .1em .1em 0;
+}
+article li.prompt button {
+  margin: 0 .3em .3em 0;
+}
+article section.commands li:hover {
+  border-color: transparent !important;
+}
+article button:hover {
+  cursor: pointer !important;
+}
+article button {
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+article section.commands > button, article li.prompt > button, article section header button {
+  font-size: .7em;
+  margin-left: .5em;
+}
+article ul > li button, article section.commands button, article li.prompt button, article section header button {
+  background-color: transparent;
+  border: solid 1px #DDD;
+  color: #DDD;
+  font-size: .7em;
+  float: right;
+  padding: .2em;
+}
+article ul > li:hover button, article section.commands:hover button, article li.prompt:hover button, article .associations li:hover button {
+  border: solid 1px #DDD;
+  color: #DDD;
+  display: block;
+}
+article:hover section.commands li button, article:hover li.prompt button, article .associations li:hover button {
+  border-color: transparent;
+  color: white;
+  background-color: #BBB;
+  display: block;
+}
+article button:hover {
+  background-color: dimgray !important;
+  color: white;
+  border-color: transparent;
+}
+#buttons {
+  position: absolute;
+  right: 1px;
+  top: 1px;
+}
+#buttons, #buttons button {
+  font-size: .9em;
+}
+article.association {
+  border-bottom: dotted 1px dimgray;
+  float: left;
+  clear: both;
+  padding: 0;
+}
+article li label + a {
+  float: left;
+  margin: 0;
+  padding: .3em;
+  clear: left;
+  text-decoration: none;
+}
+article.association li a {
+  display: block;
+  float: left;
+  clear: both;
+  width: 27em;
+}
+article.association li.in-context label{
+  background-color: #777;
+  color: white;
+}
+section.associations fieldset {
+  padding: 0;
+  border: none;
+}
+section.associations fieldset legend {
+  text-decoration: underline;
+  text-transform: uppercase;
+  font-size: .8em;
+  color: dimgray;
+  padding-top: 1em;
+}
+
+/* topic associations */
+.associations > li:hover, .constraints > li:hover {
+  border-color: transparent !important;
+}
+.associations table, .constraints table {
+  border: solid 1px #DDD;
+  border-collapse: collapse;
+  float: left;
+  clear: both;
+  min-width: 29.75em;
+  width: 29.75em;
+  table-layout: fixed !important;
+}
+.associations table th, .constraints table th {
+  background-color: #DDD;
+  color: dimgray;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: .7em;
+  text-align: left;
+  padding: .3em;
+}
+.associations table td, .constraints table td {
+  font-size: .9em;
+  padding: .3em;
+}
+.associations table td, .associations table th, .constraints table td, .constraints table th {
+  width: 1%; /* force proportion */
+  overflow: hidden;
+}
+.associations table td a, .constraints table td a {
+  display: block;
+  float: left;
+}
+.associations table td + td, .constraints table td + td {
+  border-left: solid 1px #DDD;
+}
+.associations table tr, .constraints table tr {
+  border-bottom: solid 1px #DDD;
+}
+.associations table caption, .constraints table caption, li.prompt h2 {
+  text-transform: uppercase;
+  text-align: left;
+  font-size: .75em;
+  color: #BBB;
+  text-decoration: underline;
+  margin-bottom: .1em;
+  padding: .2em 0;
+}
+li.prompt h2 {
+  color: dimgray;
+}
+.associations button.add-association, .constraints > li > button {
+  float: right;
+  margin-bottom: -1.4em;
+}
+.associations table caption > a {
+  color: #AAA;
+}
+.associations table th > a {
+  color: dimgray;
+  text-decoration: none;
+}
+.associations a.in-context {
+  color: dimgray;
+  text-decoration: none;
+}
+#trash.trashing {
+  border-color: red;
+  background-color: pink;
+}
+#save {
+  right: 3.5em;
+}
+#clear {
+  right: 6em;
+}
+.drophover {
+  background-color: #E7F5E3 !important;
+}
+.ui-draggable-dragging  {
+  white-space: nowrap !important;
+}
+
+/* topic types */
+article.topic ul.types {
+  position: absolute;
+  top: .5em;
+  right: 1.25em;
+  float: right;
+  clear: right;
+  margin: 0;
+  background-color: white;
+}
+article.topic ul.types li {
+  float: right;
+  display: inline;
+  clear: none;
+  padding: 0;
+}
+article.topic ul.types li.role-type, article.topic ul.types li.super-type {
+  display: none;
+}
+article.topic ul.types:hover li {
+  display: inline;
+}
+article.topic:hover ul.types {
+  opacity: .9;
+}
+article.topic ul.types li.basic-type a {
+  text-decoration: none;
+  background-color: dimgray;
+  color: white;
+}
+article.topic ul.types li.role-type a {
+  background-color: #D3EDB7;
+}
+article.topic ul.types li.super-type a {
+  background-color: #F2E494;
+}
+.workspace article.topic_map > div {
+  width: 29.75em !important;
+}
+ul.basic_types li {
+  float: left;
+  clear: none;
+  padding: 0;
+}
+
+article section > ul {
+  width: 30em;
+}
+article section > ul > li {
+  float: left; clear: none; padding: 0; margin: 0;
+}
+article section.names > ul > li, article section.occurrences > ul > li {
+  padding: .2em;
+}
+article section > ul > li > a, #maps a, .maps a, ul.basic_types a {
+  background-color: white;
+  padding: .2em;
+  margin: .2em;
+  border-radius: .3em; -moz-border-radius: .3em;
+  text-decoration: none;
+  background-color: #DDD;
+  display: inline-block;
+  color: black;
+}
+
+header ul.maps a {
+  background-color: white;
+}
+ul.basic_types a {
+  background-color: #DDD;
+}
+ul.basic_types a.foreign {
+  background-color: #F2DBA5;
+}
+ul.basic_types a.native { /* a term is a composite and can be both foreign and native */
+  background-color: #C1C9C2;
+}
+ul.basic_types a.foreign.native { /* a term is a composite and can be both foreign and native */
+  background-color: #C1C49B;
+}
+#topical {
+ position: relative;
+ width: auto;
+ background-color: transparent;
+}
+#topic-type-list, article section ul, #maps, .maps {
+  list-style: none;
+  margin: 0;
+  display: inline-block;
+  border-radius: 3px; -moz-border-radius: 3px;
+  padding: 0;
+}
+#topic-type-list li, #maps li, .maps li {
+  display: inline-block;
+}
+#kontrols button {
+  text-transform: uppercase;
+  font-size: .9em;
+}
+#view-settings {
+  width: 10em !important;
+  text-align: left !important;
+}
+#view-settings label {
+  display: block;
+  text-transform: capitalize;
+}
+
+/* cardinality control */
+div.card > * {
+  font-size: inherit;
+}
+ div.card > span {
+  float: left;
+  padding: .4em .1em;
+  text-align: bottom;
+  border: none;
+  margin: 0 .5em;
+}
+a.ui-draggable-dragging {
+  padding: 0;
+}
+
+article ul.errors, article ul.errors:hover {
+  color: red;
+  font-size: .7em;
+  float: left;
+  clear: both;
+  margin-left: .5em;
+}
+article ul.errors li, article ul.errors li:hover {
+  float: left;
+  padding: .2em;
+  margin: .2em .5em 0 0;
+  background-color: pink;
+  color: red;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: none !important;
+}
+li.prompt {
+  position: relative;
+  padding: .2em !important;
+}
+span.close {
+  background: url(../images/close.png) no-repeat 0 0;
+  height: 14px;
+  width: 14px;
+  cursor: pointer;
+  position: absolute;
+  top: .2em;
+  right: .2em;
+}
+article div.dirty {
+  position: absolute;
+  left: .2em;
+  top: .2em;
+}
+article li .chzn-container, article li .chzn-results, article li ul.chzn-drop {
+  width: 30em;
+}
+article li .chzn-container {
+  font-size: .995em;
+}
+article li .chzn-container a.chzn-single {
+  color: black;
+}
+article li ul.chzn-drop {
+  font-size: 0.97em;
+}
+article li .chzn-results {
+  font-size: 0.97em;
+}
+article li .chzn-search input {
+  width: 29.3em;
+  font-size: 1em;
+}
+
+/* tagit */
+article li ul.tagit {
+  width: 30em;
+  font-size: .98em;
+  border: 1px inset;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  padding: .1em .2em;
+}
+ul.tagit li {
+  clear: none !important;
+}
+body .ui-autocomplete, body .ui-autocomplete .ui-menu-item, body .ui-autocomplete .ui-menu-item a.ui-corner-all {
+  width: 10em !important;
+  padding: .2em;
+}
+body .ui-autocomplete .ui-menu-item a.ui-corner-all {
+  border: none;
+}
+article section.collapsed > header {
+  display: block;
+  background-image: url(/images/icons/plus.png);
+}
+article section.blank > header {
+  cursor: default;
+}
+#app article > section > header {
+  display: none;
+}
+#app.headers article > section > header, #app article > section > ul.commands {
+  display: block;
+}
+article section.collapsed > * {
+  display: none;
+}
+article section.blank header h2 {
+  text-decoration: line-through;
+}
+article section header button {
+  font-size: .6em !important;
+  background-color: #AAA;
+  color: white;
+}
+article section ul.commands li {
+  padding: 0;
+}
+article section ul.commands li:hover {
+  border-color: transparent;
+}
+.bar {
+  display: block;
+  width: 100%;
+  height: 28px;
+}
+#footer {
+  z-index: 99;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: #DDD;
+  -moz-box-shadow:    3px 3px 5px 6px #999;
+  -webkit-box-shadow: 3px 3px 5px 6px #999;
+  box-shadow:         3px 3px 5px 6px #999;
+}
+#footer > img {
+  margin-top: 2px;
+}
+#header {
+  display: block;
+  background-color: transparent;
+  z-index: 999;
+  position: relative;
+}
+#header a.current-map {
+  background-color: black;
+  color: white;
+}
+#workspaces {
+  height: auto !important;
+  display: block;
+  width: 100%;
+  background-color: pink;
+}
+.workspace {
+  margin: 0;
+  width: 100%;
+}
+.workspace + .workspace {
+  width: 45%;
+  height: 83%;
+  border: inset 2px;
+  position: fixed !important;
+  top: 2.5em;
+  left: 54% !important;
+}
+.workspace > *:first-child {
+  margin-top: 2.25em;
+}
+.workspace + .workspace {
+  background-color: #AAA;
+}
+.workspace > img.clear {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  padding: 0;
+  margin: 2.25em 0 0 1em;
+  float: left;
+}
+img.clear, #save, #trash {
+  width: 20px !important;
+  height: 20px !important;
+  padding: 0;
+  cursor: pointer;
+  display: inline-block;
+}
+#trash {
+  border: solid 2px transparent;
+}
+#trash.trashing {
+  border-color: red;
+  background-color: pink;
+}
+#app > ul {
+  border: solid 2px blue;
+  z-index: 9999;
+  padding: 1em;
+  margin-top: 2em;
+}
+.request-bar {
+  margin: 0;
+  display: inline-block;
+  padding: 0 .25em;
+  border: solid 1px black;
+  background-color: white;
+  border-radius: .3em;
+  -moz-border-radius: .3em;
+  font-size: 7.8pt !important;
+  position: relative;
+}
+.request-bar img {
+  cursor: pointer;
+  border: none;
+  margin: 2px 0;
+  float: right;
+}
+.request-bar input {
+  border: none;
+  width: 25em;
+  margin: 2px 0;
+  background-color: transparent;
+}
+.request-bar input:focus {
+  outline: none;
+}
+#app footer .disabled {
+  opacity: .5;
+}
+.request-bar.disabled > input {
+  visibility: hidden;
+}
+.bar > * {
+  float: left;
+  margin: 2px 0 0 2px;
+}
+.bar > .request-bar {
+  float: left;
+}
+.bar > img {
+  float: right;
+  border: solid 1px transparent;
+}
+img.mode-button.inactive {
+  opacity: .4;
+}
+.request-bar.inactive {
+  display: none;
+}
+#header .maps a {
+  box-shadow: 3px 3px 4px #000;
+}
+#header .maps {
+  margin-left: 1em;
+}
+#app-title {
+  font-weight: bold;
+  margin: .5em 1em .2em;
+  float: left;
+}
+#footer ul > li {
+  display: block;
+  float: left;
+  border: solid 1px black;
+  margin: .2em;
+  padding: .2em;
+  font-size: .8em;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+#footer ul.scopes > li {
+  background-color: #DDB555;
+}
+#footer ul.types > li {
+  background-color: #8EA546;
+}
+#footer ul.tags > li {
+  background-color: dimgray;
+  color: white;
+}
+
+article.topic_map ul li:hover {
+  border-color: transparent;
+}
+article .request-bar input {
+  width: 31em;
+}
+article .request-bar {
+  border-color: #BBB;
+  margin: .3em 0 0 .3em;
+  float: left;
+  clear: both;
+}
+div.grouping {
+  position: relative;
+  float: left;
+}
+div.grouping > button {
+  float: left;
+}
+div.grouping:hover > button {
+  background-color: #38506B !important;
+}
+div.grouping > ul {
+  position: absolute;
+  top: 0;
+  overflow-x: visible;
+  padding-top: 18px;
+  z-index: 999;
+  white-space: no-wrap;
+}
+div.grouping > ul > li {
+  margin-top: 1px;
+}
+div.grouping > ul > li > button {
+  background-color: #577697 !important;
+}
+div.grouping > ul * {
+  border: none !important;
+  border-color: transparent !important;
+  float: left;
+  clear: none;
+}
+.request-bar { /*necessary for autocomplete*/
+  overflow: visible;
+  height: 2em;
+}
+
+#app article section .request-bar {
+  display: none;
+}
+#app[data-mode=entry] article section .request-bar {
+  display: block;
+}
+#app[data-mode=entry] article section.collapsed .request-bar {
+  display: none;
+}
+.export textarea, .json textarea {
+  min-height: 20em;
+  min-width: 33em;
+}
+
+#app section.associations ul, #app section.associations li, #app section.associations li:hover {
+  border: none;
+}
+#app section.associations ul, #app section.associations ul li {
+  width: 30em;
+  padding: 0;
+  margin: 0;
+}
+#app section.associations ul.association-types {
+  width: 30em;
+  padding: 0;
+}
+#app section.associations ul.association-types ul.association {
+  border: solid 1px #DDD;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin-top: .2em;
+  width: 30.4em;
+}
+#app section.associations ul.association-types ul.association > li + li {
+  border-top: dotted 1px #DDD;
+}
+#app section.associations ul.association-types ul.association > li {
+  position: relative;
+  padding: .2em;
+  margin: 1px;
+  min-height: 1em;
+}
+#app section.associations ul.association-types h2 {
+  text-decoration: underline;
+  text-transform: uppercase;
+  float: left;
+  clear: both;
+  width: 30em;
+  display: block;
+  margin: .5em 0 .2em;
+  font-size: .8em;
+}
+#app section.associations ul.association > li h3 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: .75em;
+  margin: .2em .7em 0 0;
+  color: dimgray;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding: .2em;
+  text-transform: uppercase;
+}
+#app section.associations li h2 > a {
+  color: black;
+  text-decoration: none;
+}
+#app section.associations ul.association > li h3 > a {
+  color: #AAA;
+  text-decoration: none;
+}
+#app section.associations ul.association > li a {
+  padding: .2em;
+}
+#app section.associations ul.players > li > img {
+  visibility: hidden;
+  cursor: pointer;
+}
+#app[data-mode='entry'] section.associations ul.players > li:hover > img {
+  visibility: visible;
+}
+#app li[data-counterparts='0'] {
+  display: none;
+}
+#app[data-mode='entry'] li[data-counterparts='0'] {
+  display: inherit;
+}
